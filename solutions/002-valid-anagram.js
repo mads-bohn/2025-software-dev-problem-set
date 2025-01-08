@@ -3,17 +3,20 @@ var isAnagram = function(s, t) {
         return false;
     }
 
-   let countArr = new Array(26).fill(0);
-   for (let i=0; i<s.length; i++) {
-    countArr[s.charCodeAt(i) - 'a'.charCodeAt(0)]++;
-    countArr[t.charCodeAt(i) - 'a'.charCodeAt(0)]--;
-   }
-
-   for (let i=0; i<countArr.length; i++) {
-    if (countArr[i] !== 0){
-        return false;
+   let count = new Map();
+   
+    for (let char of s) {
+        count.set(char, (count.get(char) || 0) + 1);
     }
-   }
 
+    for (let char of t) {
+        count.set(char, (count.get(char) || 0) - 1);
+    }
+
+    for (let num of count.values()) {
+        if (num !== 0) {
+            return false;
+        }
+    }
     return true;
 };
