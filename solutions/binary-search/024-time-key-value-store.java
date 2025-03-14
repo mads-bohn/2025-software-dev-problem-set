@@ -1,3 +1,7 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+
 class TimeMap {
 
     private Map<String, TreeMap<Integer, String>> map;
